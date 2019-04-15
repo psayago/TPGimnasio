@@ -10,25 +10,32 @@ public class Entrenador {
 	
 	public Entrenador(VecEntrenadores nombre) {
 		this.listaBoxeadores = new Boxeador[5];
-		this.nombre=nombre;
-		/*switch (nombre){
+		this.setNombre(nombre);
+		categoria=new Categorias[2];
+		
+		switch (nombre) {
 		case PEDRO:
-			;
+			categoria[0]= Categorias.MOSCA;
+			categoria[1]= Categorias.GALLO;
 			break;
 		case MIGUEL:
-			
+			categoria[0]= Categorias.PLUMA;
+			categoria[1]= Categorias.LIGERO;
 			break;
 		case JUAN:
-			this.categorias = new categoria[2];
+			categoria[0]= Categorias.WELTER;
+			categoria[1]= Categorias.MEDIANO;
 			break;
 		case ERNESTO:
-			
-			break;	
-			
+			categoria[0]= Categorias.MEDIOPESADO;
+			categoria[1]= Categorias.PESADO;
+			break;				
 		default:
 			break;
-		}*/
+		}
+	
 	}
+	
 	
 	public VecEntrenadores getNombre() {
 		return nombre;
@@ -42,24 +49,38 @@ public class Entrenador {
 		return listaBoxeadores;
 	}
 	
+	public boolean esEntrenable(Boxeador boxeador) {
+		return (  this.getCont() < 5 &&
+				(boxeador.getCategoria()==this.categoria[0] || 
+				boxeador.getCategoria()==this.categoria[1])  );
+	}
 	
 
 	public void asignoBoxeador(Boxeador boxeador) {
-		if(cont < 5) {
-			this.listaBoxeadores[cont]= boxeador;
-			
+		
+		if(this.esEntrenable(boxeador)) {			
+			this.listaBoxeadores[cont]= boxeador;			
 			System.out.println("boxeador asignado");
-			cont++;
-			
-		}else {
-			System.out.println(this.nombre + " Este entrendor llego al maximo de boxeadores a entrenar");
-			System.out.println("no se pueden asignar mas boxeadores a este entrenador");
-		}
+			System.out.println("*****************");
+			System.out.println("");
+			cont++;			
+		}			
 	}
+	
+	
+	public int getCont() {
+		return cont;
+	}
+
+
+	
 
 	@Override
 	public String toString() {
-		return "Entrenador [nombre=" + nombre + ", categoria=" + categoria +  "] '/n' ";
+		return "Entrenador [nombre=" + nombre + ", categorias= " + categoria[0] + ", " + categoria[1] + "] ";
 	}
+
+
+	
 	
 }

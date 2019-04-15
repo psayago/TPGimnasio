@@ -34,6 +34,15 @@ public class Boxeador {
 	public double getPeso() {
 		return peso;
 	}
+	
+	public void identificarse() {
+		System.out.println("**************************");
+		System.out.println("Nombre: "+ this.getNombre());
+		System.out.println("Peso: "+ this.getPeso());
+		System.out.println("Categoria: " + this.getCategoria());
+		System.out.println("**************************");
+
+	}
 
 
 

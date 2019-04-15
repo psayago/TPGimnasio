@@ -3,8 +3,8 @@ package ar.edu.utn.controlador;
 import ar.edu.utn.modelo.Boxeador;
 import ar.edu.utn.modelo.Categorias;
 
-
 public class BoxeadorControlador {
+	
 	public Boxeador creoBoxeador(String nombre, double peso){
 		Boxeador b = new Boxeador();
 		b.setNombre(nombre);
@@ -26,6 +26,12 @@ public class BoxeadorControlador {
 		}else
 			if (69.853<=peso && peso<76.205  ) {
 			b.setCategoria(Categorias.MEDIANO);
+		}else
+			if (76.205<=peso && peso<91.000 ) {
+			b.setCategoria(Categorias.MEDIOPESADO);
+		}else
+			if (91.000<=peso) {
+			b.setCategoria(Categorias.PESADO);
 		}
 		return b;
 	}
